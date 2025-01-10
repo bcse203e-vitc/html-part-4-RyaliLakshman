@@ -3,44 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Application</title>
+    <title>Job Application Form</title>
     <style>
         .page { display: none; }
         .active { display: block; }
+        .container { width: 60%; margin: 0 auto; padding: 20px; }
     </style>
 </head>
 <body>
-    <h2>Job Application Form</h2>
-    
-    <div class="page active" id="page1">
-        <h3>Personal Details</h3>
-        <label>Name: <input type="text" name="name"></label><br><br>
-        <label>Contact Info: <input type="text" name="contact"></label><br><br>
-        <button type="button" onclick="nextPage(2)">Next</button>
-    </div>
+    <div class="container">
+        <h2>Job Application Form</h2>
+        
+        <!-- Page 1: Personal Details -->
+        <div class="page active" id="page1">
+            <h3>Personal Details</h3>
+            <label for="name">Name: <input type="text" id="name" required></label><br><br>
+            <label for="address">Address: <input type="text" id="address" required></label><br><br>
+            <label for="contact">Contact Info: <input type="text" id="contact" required></label><br><br>
+            <button type="button" onclick="nextPage(2)">Next</button>
+        </div>
 
-    <div class="page" id="page2">
-        <h3>Educational Background</h3>
-        <label>Degree: <input type="text" name="degree"></label><br><br>
-        <label>Year of Passing: <input type="text" name="year"></label><br><br>
-        <button type="button" onclick="previousPage(1)">Previous</button>
-        <button type="button" onclick="nextPage(3)">Next</button>
-    </div>
+        <!-- Page 2: Educational Background -->
+        <div class="page" id="page2">
+            <h3>Educational Background</h3>
+            <label for="degree">Degree: <input type="text" id="degree" required></label><br><br>
+            <label for="year">Year of Passing: <input type="text" id="year" required></label><br><br>
+            <label for="institution">Institution Name: <input type="text" id="institution" required></label><br><br>
+            <button type="button" onclick="previousPage(1)">Previous</button>
+            <button type="button" onclick="nextPage(3)">Next</button>
+        </div>
 
-    <div class="page" id="page3">
-        <h3>Work Experience</h3>
-        <label>Company: <input type="text" name="company"></label><br><br>
-        <label>Designation: <input type="text" name="designation"></label><br><br>
-        <label>Resume: <input type="file" name="resume"></label><br><br>
-        <button type="button" onclick="previousPage(2)">Previous</button>
-        <button type="submit">Submit</button>
+        <!-- Page 3: Work Experience -->
+        <div class="page" id="page3">
+            <h3>Work Experience</h3>
+            <label for="company">Company Name: <input type="text" id="company" required></label><br><br>
+            <label for="designation">Designation: <input type="text" id="designation" required></label><br><br>
+            <label for="duration">Duration: <input type="text" id="duration" required></label><br><br>
+            <label for="resume">Upload Resume: <input type="file" id="resume" required></label><br><br>
+            <button type="button" onclick="previousPage(2)">Previous</button>
+            <button type="submit">Submit</button>
+        </div>
     </div>
 
     <script>
+        // Show the selected page and hide others
         function nextPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page' + page).classList.add('active');
         }
+
+        // Go to the previous page
         function previousPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page' + page).classList.add('active');
