@@ -3,60 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Application Form</title>
-    <style>
-        .page { display: none; }
-        .active { display: block; }
-        .container { width: 60%; margin: 0 auto; padding: 20px; }
-    </style>
+    <title>Simple Job Application Form</title>
 </head>
 <body>
-    <div class="container">
-        <h2>Job Application Form</h2>
-        
-        <!-- Page 1: Personal Details -->
-        <div class="page active" id="page1">
-            <h3>Personal Details</h3>
-            <label for="name">Name: <input type="text" id="name" required></label><br><br>
-            <label for="address">Address: <input type="text" id="address" required></label><br><br>
-            <label for="contact">Contact Info: <input type="text" id="contact" required></label><br><br>
-            <button type="button" onclick="nextPage(2)">Next</button>
-        </div>
+    <h1>Job Application Form</h1>
+    
+    <!-- Step 1: Personal Details -->
+    <h2>Step 1: Personal Details</h2>
+    <form>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
 
-        <!-- Page 2: Educational Background -->
-        <div class="page" id="page2">
-            <h3>Educational Background</h3>
-            <label for="degree">Degree: <input type="text" id="degree" required></label><br><br>
-            <label for="year">Year of Passing: <input type="text" id="year" required></label><br><br>
-            <label for="institution">Institution Name: <input type="text" id="institution" required></label><br><br>
-            <button type="button" onclick="previousPage(1)">Previous</button>
-            <button type="button" onclick="nextPage(3)">Next</button>
-        </div>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
 
-        <!-- Page 3: Work Experience -->
-        <div class="page" id="page3">
-            <h3>Work Experience</h3>
-            <label for="company">Company Name: <input type="text" id="company" required></label><br><br>
-            <label for="designation">Designation: <input type="text" id="designation" required></label><br><br>
-            <label for="duration">Duration: <input type="text" id="duration" required></label><br><br>
-            <label for="resume">Upload Resume: <input type="file" id="resume" required></label><br><br>
-            <button type="button" onclick="previousPage(2)">Previous</button>
-            <button type="submit">Submit</button>
-        </div>
-    </div>
+        <label for="phone">Phone:</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
 
-    <script>
-        // Show the selected page and hide others
-        function nextPage(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page' + page).classList.add('active');
-        }
+        <!-- Step 2: Educational Background -->
+        <h2>Step 2: Educational Background</h2>
 
-        // Go to the previous page
-        function previousPage(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page' + page).classList.add('active');
-        }
-    </script>
+        <label for="degree">Degree:</label><br>
+        <input type="text" id="degree" name="degree" required><br><br>
+
+        <label for="year">Year of Graduation:</label><br>
+        <input type="text" id="year" name="year" required><br><br>
+
+        <label for="university">University:</label><br>
+        <input type="text" id="university" name="university" required><br><br>
+
+        <!-- Step 3: Work Experience -->
+        <h2>Step 3: Work Experience</h2>
+
+        <label for="company">Last Company Worked At:</label><br>
+        <input type="text" id="company" name="company"><br><br>
+
+        <label for="position">Position Held:</label><br>
+        <input type="text" id="position" name="position"><br><br>
+
+        <label for="resume">Upload Resume:</label><br>
+        <input type="file" id="resume" name="resume"><br><br>
+
+        <button type="submit">Submit Application</button>
+    </form>
 </body>
 </html>
