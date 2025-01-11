@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Order Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            margin-top: 10px;
+        }
+        .order-summary {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Product Order Form</h2>
+    <form id="orderForm">
+        <!-- Customer Info -->
+        <label>Customer Name: <input type="text" name="name" id="name" required></label><br><br>
+        <label>Email: <input type="email" name="email" id="email" required></label><br><br>
+        <label>Address: <input type="text" name="address" id="address" required></label><br><br>
+        
+        <!-- Product Selection -->
+        <label>Product:
+            <select name="product" id="product" onchange="updateTotalPrice()" required>
+                <option value="product1" data-price="20">Product 1 - $20</option>
+                <option value="product2" data-price="40">Product 2 - $40</option>
+                <option value="product3" data-price="60">Product 3 - $60</option>
+            </select>
+        </label><br><br>
+
+        <!-- Quantity -->
+        <label>Quantity: <input type="number" name="quantity" id="quantity" value="1" min="1" onchange="updateTotalPrice()" required></label><br><br>
+
+        <!-- Delivery Preferences -->
+        <label>Delivery Type:
+            <input type="radio" name="delivery" value="Standard" checked> Standard
+            <input type="radio" name="delivery" value="Express"> Express
+        </label><br><br>
+
+        <!-- Total Price -->
+        <div class="order-summary">
+            Total Price: $<span id="totalPrice">20</span>
+        </div><br>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <script>
+        // Function to update the total price based on product and quantity
+        function updateTotalPrice() {
+            // Get the selected product and its price
+            const productSelect = document.getElementById('product');
+            const selectedProduct = productSelect.options[productSelect.selectedIndex];
+            const productPrice = parseFloat(selectedProduct.getAttribute('data-price'));
+
+            // Get the quantity value
+            const quantity = document.getElementById('quantity').value;
+
+            // Calculate the total price
+            const totalPrice = productPrice * quantity;
+
+            // Update the total price display
+            document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Booking Form</title>
+</head>
+<body>
+    <h1>Travel Booking Form</h1>
+    <form>
+        <!-- Personal Details -->
+        <h2>Personal Details</h2>
+        <label for="name">Full Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="contact">Contact Information:</label><br>
+        <input type="text" id="contact" name="contact" required><br><br>
+
+        <!-- Travel Details -->
+        <h2>Travel Details</h2>
+        <label for="destination">Destination:</label><br>
+        <select id="destination" name="destination" required>
+            <option value="">--Select Destination--</option>
+            <option value="Paris">Paris</option>
+            <option value="New York">New York</option>
+            <option value="Tokyo">Tokyo</option>
+            <option value="Sydney">Sydney</option>
+        </select><br><br>
+
+        <label for="travel-date">Travel Dates:</label><br>
+        <input type="date" id="travel-date" name="travel-date" required><br><br>
+
+        <label for="travelers">Number of Travelers:</label><br>
+        <input type="number" id="travelers" name="travelers" min="1" required><br><br>
+
+        <label>Travel Class:</label><br>
+        <input type="radio" id="economy" name="class" value="Economy" required>
+        <label for="economy">Economy</label><br>
+        <input type="radio" id="business" name="class" value="Business">
+        <label for="business">Business</label><br>
+        <input type="radio" id="first" name="class" value="First Class">
+        <label for="first">First Class</label><br><br>
+
+        <!-- Travel Insurance -->
+        <label>
+            <input type="checkbox" id="insurance" name="insurance">
+            Opt for Travel Insurance
+        </label><br><br>
+
+        <!-- Total Cost -->
+        <h2>Calculate Total Cost</h2>
+        <label for="total-cost">Total Cost ($):</label><br>
+        <input type="text" id="total-cost" name="total-cost" readonly><br><br>
+
+        <button type="button" onclick="calculateCost()">Calculate Cost</button>
+        <button type="submit">Submit Booking</button>
+    </form>
+
+    <script>
+        function calculateCost() {
+            const travelers = document.getElementById('travelers').value;
+            const classType = document.querySelector('input[name="class"]:checked');
+            if (!travelers || !classType) {
+                alert('Please fill in the number of travelers and select a travel class.');
+                return;
+            }
+
+            let costPerTraveler = 0;
+            switch (classType.value) {
+                case 'Economy':
+                    costPerTraveler = 500;
+                    break;
+                case 'Business':
+                    costPerTraveler = 1000;
+                    break;
+                case 'First Class':
+                    costPerTraveler = 2000;
+                    break;
+            }
+
+            const totalCost = costPerTraveler * travelers;
+            document.getElementById('total-cost').value = totalCost;
+        }
+    </script>
+</body>
+</html>
